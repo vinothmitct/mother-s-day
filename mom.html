@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffeef8 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #e75480;
+            margin-top: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .button-container {
+            margin: 50px 0;
+        }
+
+        .mom-button {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(233, 84, 128, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .mom-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(233, 84, 128, 0.4);
+        }
+
+        .mom-button:active {
+            transform: translateY(0);
+        }
+
+        .mom-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #fad0c4 0%, #ff9a9e 99%, #ff9a9e 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mom-button:hover::before {
+            opacity: 1;
+        }
+
+        .wishes {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .wishes h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #e75480;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .wishes p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .wishes .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #e75480;
+            margin-top: 20px;
+        }
+
+        .flower {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .flower1 {
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FF9A9E" d="M50 20a5 5 0 0 1 5 5v25h25a5 5 0 0 1 0 10H55v25a5 5 0 0 1-10 0V60H20a5 5 0 0 1 0-10h25V25a5 5 0 0 1 5-5z"/><circle cx="50" cy="50" r="10" fill="%23FFD700"/></svg>');
+            top: 10%;
+            left: 5%;
+        }
+
+        .flower2 {
+            width: 80px;
+            height: 80px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23FAD0C4"/><circle cx="50" cy="50" r="20" fill="%23FF9A9E"/></svg>');
+            top: 70%;
+            left: 10%;
+        }
+
+        .flower3 {
+            width: 120px;
+            height: 120px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23E75480" d="M50 10c0 0 15 20 15 40s-15 40-15 40-15-20-15-40 15-40 15-40z"/><path fill="%23E75480" d="M90 50c0 0-20 15-40 15S10 50 10 50s20-15 40-15 40 15 40 15z"/><path fill="%23E75480" d="M30 20c0 0 10 25 10 45s-10 45-10 45-10-25-10-45 10-45 10-45z"/><path fill="%23E75480" d="M70 20c0 0 10 25 10 45s-10 45-10 45-10-25-10-45 10-45 10-45z"/><circle cx="50" cy="50" r="10" fill="%23FFD700"/></svg>');
+            top: 20%;
+            right: 5%;
+        }
+
+        .flower4 {
+            width: 90px;
+            height: 90px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23FFD700"/><circle cx="30" cy="30" r="15" fill="%23FF9A9E"/><circle cx="70" cy="30" r="15" fill="%23FF9A9E"/><circle cx="30" cy="70" r="15" fill="%23FF9A9E"/><circle cx="70" cy="70" r="15" fill="%23FF9A9E"/></svg>');
+            bottom: 10%;
+            right: 10%;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #e75480;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            margin: 30px auto;
+            border: 15px solid white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed #e75480;
+            border-radius: 5px;
+            z-index: -1;
+        }
+
+        /* Animation classes */
+        .animate-float {
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        .animate-rotate {
+            animation: rotate 20s linear infinite;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-pop-in {
+            animation: popIn 0.5s ease-out forwards;
+        }
+
+        .animate-heart {
+            animation: float 4s ease-in-out infinite, fadeOut 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            80% { transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .flower {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .flower3 {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower flower1"></div>
+    <div class="flower flower2"></div>
+    <div class="flower flower3"></div>
+    <div class="flower flower4"></div>
+    
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <h1 id="mainTitle"></h1>
+        <p class="subtitle" id="subTitle"></p>
+        
+        <div class="photo-frame" id="photoFrame">
+            <!-- Replace with your mom's photo -->
+            <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Beautiful Mom">
+        </div>
+        
+        <div class="button-container">
+            <button class="mom-button" id="momButton">Hi Mom, Click Me!</button>
+        </div>
+        
+        <div class="wishes" id="wishes">
+            <h2>The Soul of Kindness,</h2>
+            <p>She is the first light that greets the morning, <br>
+                The steady hand that guides without demanding. <br>
+                Through every stumble and every triumph, <br>
+                Her love remains—a constant, quiet understanding. <br></p>
+            <p>No measure can weigh the depth of her sacrifices, <br>
+                No words can capture the warmth of her embrace. <br>
+                She gives without keeping count, <br>
+                Loves without condition, <br>
+                And becomes the foundation upon which dreams are built.. <br></p>
+            <p>Her patience is an unending river, <br>
+                Her wisdom, the compass in life’s storms. <br>
+                She is shelter. She is strength. <br>
+                The keeper of memories, the weaver of futures. <br></p>
+            <p>On this day and all days, <br>
+                She is celebrated—not just as a mother, <br>
+                But as the extraordinary woman she is. <br>
+                A force of nature wrapped in tenderness, <br>
+                A love that shapes worlds <br> <br></p>
+
+                <h4> மங்கையா ராகப் பிறப்பதற்கே - நல்ல
+                    மாதவஞ் செய்திட வேண்டும், அம்மா!
+               <br>பங்கயக் கைந்நலம் பார்த்தலவோ - இந்தப்
+                    பாரில் அறங்கள் வளரும், அம்மா!</h4>
+            <div class="signature"><br>Your Child</div>
+        </div>
+    </div>
+
+    <script>
+        let stage = 0;
+        const button = document.getElementById('momButton');
+        const mainTitle = document.getElementById('mainTitle');
+        const subTitle = document.getElementById('subTitle');
+        const photoFrame = document.getElementById('photoFrame');
+        const wishes = document.getElementById('wishes');
+        const flowers = document.querySelectorAll('.flower');
+        
+        button.addEventListener('click', function() {
+            stage++;
+            
+            if (stage === 1) {
+                // First click - reveal Mother's Day text
+                mainTitle.textContent = "Happy Mother's Day";
+                subTitle.textContent = "பெற்ற தாயும் பிறந்த பொன்னாடும் நற்றவ வானினும் நனி சிறந்தனவே";
+                
+                mainTitle.classList.add('animate-fade-in');
+                subTitle.classList.add('animate-fade-in');
+                
+                setTimeout(() => {
+                    mainTitle.style.opacity = 1;
+                    subTitle.style.opacity = 1;
+                }, 100);
+                
+                button.textContent = "Click for a Special Surprise!";
+            } 
+            else if (stage === 2) {
+                // Second click - animate everything
+                photoFrame.classList.add('animate-pop-in');
+                photoFrame.style.opacity = 1;
+                
+                // Animate flowers
+                flowers.forEach((flower, index) => {
+                    setTimeout(() => {
+                        flower.classList.add('animate-float');
+                        flower.style.opacity = 0.7;
+                        flower.classList.add('animate-fade-in');
+                    }, index * 300);
+                });
+                
+                // Show wishes with animation
+                wishes.style.display = 'block';
+                setTimeout(() => {
+                    wishes.classList.add('animate-pop-in');
+                    wishes.style.opacity = 1;
+                }, 100);
+                
+                // Create floating hearts
+                createHearts();
+                setInterval(createHearts, 3000);
+                
+                // Animate photo frame border
+                document.querySelector('.photo-frame::before').classList.add('animate-rotate');
+                
+                button.textContent = "I Love You Mom!";
+                button.style.animation = "pulse 1s infinite alternate";
+            }
+            else if (stage === 3) {
+                // Third click - refresh the page to start over
+                location.reload();
+            }
+        });
+
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart', 'animate-heart');
+                    heart.innerHTML = '❤';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = Math.random() * 100 + 'vh';
+                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
